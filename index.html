@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PARTH TIWARI · PORTFOLIO</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2300a5e6'/%3E%3Cpolygon points='50,8 61,38 94,38 67,57 77,90 50,70 23,90 33,57 6,38 39,38' fill='%23000'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-screen="home">
+
+<!-- Background art layers -->
+<div id="bg" aria-hidden="true">
+  <div class="bg-layer" id="bg-stripes"></div>
+  <svg class="bg-star" style="left:6%;top:8%;width:26vmax;height:26vmax" viewBox="0 0 100 100">
+    <polygon points="50,0 60,35 98,35 68,57 78,94 50,72 22,94 32,57 2,35 40,35" fill="#000"/>
+  </svg>
+  <svg class="bg-star s2" style="right:4%;bottom:6%;width:34vmax;height:34vmax" viewBox="0 0 100 100">
+    <polygon points="50,0 60,35 98,35 68,57 78,94 50,72 22,94 32,57 2,35 40,35" fill="#fff"/>
+  </svg>
+  <!-- Per-screen menu artwork: assets/menus/<screen>.jpg
+       Each falls back to the CSS stripes if its file is missing -->
+  <img class="menu-art" id="art-home" src="assets/menus/home-still.jpg" alt=""
+       onload="document.body.classList.add('has-art-home')" onerror="this.remove()">
+  <img class="menu-art" id="art-skills" src="assets/menus/skills.jpg" alt=""
+       onload="document.body.classList.add('has-art-skills')" onerror="this.remove()">
+  <img class="menu-art" id="art-about" src="assets/menus/about.jpg" alt=""
+       onload="document.body.classList.add('has-art-about')" onerror="this.remove()">
+  <img class="menu-art" id="art-contact" src="assets/menus/contact.jpg" alt=""
+       onload="document.body.classList.add('has-art-contact')" onerror="this.remove()">
+  <!-- floating glass shards, home screen only -->
+  <div id="shards" aria-hidden="true">
+    <i style="--x:48%;--s:16px;--d:13s;--w:-2s"></i>
+    <i style="--x:56%;--s:10px;--d:10s;--w:-7s"></i>
+    <i style="--x:63%;--s:22px;--d:16s;--w:-11s"></i>
+    <i style="--x:70%;--s:12px;--d:11s;--w:-4s"></i>
+    <i style="--x:76%;--s:18px;--d:14s;--w:-9s"></i>
+    <i style="--x:82%;--s:9px;--d:9s;--w:-1s"></i>
+    <i style="--x:88%;--s:20px;--d:15s;--w:-6s"></i>
+    <i style="--x:93%;--s:13px;--d:12s;--w:-10s"></i>
+    <i style="--x:52%;--s:8px;--d:12s;--w:-5s"></i>
+    <i style="--x:73%;--s:11px;--d:17s;--w:-13s"></i>
+  </div>
+  <div class="bg-layer" id="bg-halftone"></div>
+  <div class="bg-layer" id="bg-vignette"></div>
+</div>
+<div id="slash" aria-hidden="true"></div>
+
+<!-- Screen transition wipe -->
+<div id="wipe" aria-hidden="true">
+  <div class="pane p3"></div>
+  <div class="pane p2"></div>
+  <div class="pane p1"></div>
+  <div class="flash"></div>
+</div>
+
+<!-- Custom animated cursor + select sound -->
+<div id="cursor" aria-hidden="true"></div>
+<audio id="sfx-select" src="assets/sfx/select.mp3" preload="auto"></audio>
+<audio id="bgm" src="assets/audio/persona.mp3" loop preload="auto"></audio>
+<button id="audio-toggle" aria-label="Turn music on">🔇</button>
+
+<div id="shell">
+  <div id="hud-top">
+    <div class="hud-tag">Portfolio // PARTH TIWARI</div>
+    <div class="hud-tag alt">INDORE · AI/ML &amp; FULL-STACK</div>
+  </div>
+
+  <div id="stage">
+
+    <!-- HOME -->
+    <section class="screen active" id="screen-home" aria-label="Main menu">
+      <div id="intro-eyebrow">Take a look at my work</div>
+      <h1 id="big-name">
+        <span class="ransom" data-ransom="PARTH"></span>
+        <span class="ransom" data-ransom="TIWARI"></span>
+      </h1>
+      <p id="tagline">
+        Final-year CS student building full-stack and AI/ML systems end to end:
+        LLM-based RAG pipelines, secure authentication, and production-style REST APIs.
+      </p>
+      <nav id="menu" aria-label="Sections">
+        <button class="menu-item sel" data-target="projects">
+          <span class="ransom" data-ransom="PROJECTS"></span><span class="cursor-mark">◀</span>
+        </button>
+        <button class="menu-item" data-target="skills">
+          <span class="ransom" data-ransom="SKILLS"></span><span class="cursor-mark">◀</span>
+        </button>
+        <button class="menu-item" data-target="experience">
+          <span class="ransom" data-ransom="EXPERIENCE"></span><span class="cursor-mark">◀</span>
+        </button>
+        <button class="menu-item" data-target="about">
+          <span class="ransom" data-ransom="ABOUT"></span><span class="cursor-mark">◀</span>
+        </button>
+        <button class="menu-item" data-target="contact">
+          <span class="ransom" data-ransom="CONTACT"></span><span class="cursor-mark">◀</span>
+        </button>
+      </nav>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="screen sub" id="screen-projects" aria-label="Projects">
+      <div class="screen-head"><span class="ransom" data-ransom="PROJECTS"></span></div>
+      <button class="back-hint" data-back>ESC · Back</button>
+      <div class="grid-label"><span class="bar"></span>Featured</div>
+      <div id="feat-grid" class="grid"></div>
+      <div class="grid-label"><span class="bar"></span>All repositories</div>
+      <div id="repo-status">Contacting GitHub…</div>
+      <div id="repo-grid" class="grid"></div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="screen sub" id="screen-skills" aria-label="Skills">
+      <div class="screen-head"><span class="ransom" data-ransom="SKILLS"></span></div>
+      <button class="back-hint" data-back>ESC · Back</button>
+      <div id="skills-body"></div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="screen sub align-right" id="screen-experience" aria-label="Experience">
+      <div class="screen-head"><span class="ransom" data-ransom="EXPERIENCE"></span></div>
+      <button class="back-hint" data-back>ESC · Back</button>
+
+      <div class="paper">
+        <p class="quote">
+          <strong class="about-highlight">Google AI Internship</strong>
+          through Medi-Caps University.
+        </p>
+        <br>
+        <p>
+          A structured AI internship covering
+          <strong class="about-highlight">applied machine learning and AI development practices.</strong>
+        </p>
+        <br>
+        <p>
+          I studied the fundamentals of
+          <strong class="about-highlight">Computer Vision and core Machine Learning,</strong>
+          including model training workflows and evaluation basics.
+        </p>
+        <br>
+        <p>
+          I also got hands-on exposure to Google's AI and productivity tooling for development
+          and collaboration, including
+          <strong class="about-highlight">Google Cloud-based AI services and Workspace tools.</strong>
+        </p>
+      </div>
+
+      <div class="paper" style="margin-top:2.4vh">
+        <p class="quote">
+          <strong class="about-highlight">Education</strong>
+        </p>
+        <br>
+        <p>
+          <strong class="about-highlight">B.Tech, Computer Science &amp; Engineering</strong>
+          at Medi-Caps University, Indore. 2023 to 2027, CGPA 7.87.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="screen sub align-right" id="screen-about" aria-label="About">
+
+      <div class="screen-head">
+        <span class="ransom" data-ransom="ABOUT"></span>
+      </div>
+
+      <button class="back-hint" data-back>ESC · Back</button>
+
+      <div class="paper">
+
+        <!-- Profile photo -->
+        <figure class="about-photo">
+          <img src="assets/me.jpg" alt="Parth Tiwari">
+          <figcaption>PARTH · INDORE</figcaption>
+        </figure>
+
+        <p class="quote">
+          I'm a final-year
+          <strong class="about-highlight">Computer Science student</strong>
+          who builds
+          <strong class="about-highlight">full-stack and AI/ML systems end to end.</strong>
+        </p>
+
+        <br>
+
+        <p>
+          My work so far covers
+          <strong class="about-highlight">LLM-based RAG pipelines, secure authentication,
+          and production-style REST APIs.</strong>
+          I'm comfortable across the stack, from React and Redux frontends to
+          FastAPI backends and applied NLP and LLM integration.
+        </p>
+
+        <br>
+
+        <p>
+          <strong class="about-highlight">ReadEase</strong> is a dyslexia-assistance reading
+          platform I built with a 2-person team over multiple semesters. It earned an
+          <strong class="about-highlight">O grade</strong> on the external project viva.
+          <strong class="about-highlight">SCRPQA</strong> is a RAG system for Q&amp;A over the
+          Bhagavad Gita, with a custom Sanskrit NLP preprocessing pipeline.
+        </p>
+
+        <br>
+
+        <p>
+          Day to day I work with
+          <strong class="about-highlight">Python, TypeScript, React, FastAPI, MongoDB,
+          ChromaDB, Gemini and Groq/LLaMA.</strong>
+          I like building things that hold up, so I evaluate them properly with tools like
+          RAGAS and BERTScore.
+        </p>
+
+        <br>
+
+        <p>
+          I'm studying at
+          <strong class="about-highlight">Medi-Caps University, Indore</strong>
+          (B.Tech CSE, 2023 to 2027) and I also practice
+          <strong class="about-highlight">competitive programming and DSA.</strong>
+        </p>
+
+        <br>
+
+        <p>
+          Away from the keyboard, I'm into
+          <strong class="about-highlight">football and volleyball,</strong>
+          and I've competed at the district level in volleyball. I train
+          <strong class="about-highlight">strength and fitness</strong>
+          regularly, love
+          <strong class="about-highlight">travelling around India</strong>
+          to see new places and cultures, and I'm a
+          <strong class="about-highlight">Clash Royale</strong>
+          player who reached 15,000 trophies.
+        </p>
+
+      </div>
+
+      <!-- CV BUTTON -->
+      <a class="cv-btn"
+         href="assets/cv/Parth_Tiwari_Resume.pdf"
+         download="Parth_Tiwari_Resume.pdf">
+        <span>⬇ Download my CV (PDF)</span>
+      </a>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section class="screen sub align-right" id="screen-contact" aria-label="Contact">
+      <div class="screen-head"><span class="ransom" data-ransom="CONTACT"></span></div>
+      <button class="back-hint" data-back>ESC · Back</button>
+      <div class="paper" style="max-width:620px">
+        <p>I'm open to <strong>software engineering and AI/ML roles</strong> and to building
+        things with good people. Drop me a message below and it goes straight to my inbox,
+        or find me on any of these:</p>
+      </div>
+      <div class="contact-list">
+        <a class="contact-chip" href="mailto:tiwariparth200514@gmail.com"><span>Email ✉</span></a>
+
+        <a class="contact-chip" href="https://github.com/BinaryBalls" target="_blank" rel="noopener"><span>GitHub ↗</span></a>
+
+        <a class="contact-chip" href="https://www.linkedin.com/in/parth-tiwari-083357372" target="_blank" rel="noopener"><span>LinkedIn ↗</span></a>
+
+        <a class="contact-chip" href="https://www.instagram.com/paaaarthhhh_/" target="_blank" rel="noopener"><span>Instagram ↗</span></a>
+
+        <a class="contact-chip" href="assets/cv/Parth_Tiwari_Resume.pdf" download="Parth_Tiwari_Resume.pdf"><span>CV ⬇</span></a>
+      </div>
+
+      <!-- Message form — relayed to your inbox via formsubmit.co.
+           NOTE: the first-ever submission emails you a one-time activation link. -->
+      <form id="contact-form" class="paper" style="max-width:620px" novalidate>
+        <div class="form-head">Send me a message</div>
+        <label class="field">
+          <span>Name</span>
+          <input type="text" name="name" required maxlength="100" autocomplete="name">
+        </label>
+        <label class="field">
+          <span>Your email</span>
+          <input type="email" name="email" required maxlength="150" autocomplete="email">
+        </label>
+        <label class="field">
+          <span>Message</span>
+          <textarea name="message" required rows="5" maxlength="3000"></textarea>
+        </label>
+        <!-- honeypot: bots fill this, humans never see it -->
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off"
+               style="position:absolute;left:-5000px" aria-hidden="true">
+        <div class="form-foot">
+          <button type="submit" class="cv-btn form-send"><span>Send it ➤</span></button>
+          <div id="form-status" role="status"></div>
+        </div>
+      </form>
+    </section>
+
+  </div>
+
+  <div id="hud-bottom">
+    <span><span class="key">↑↓</span>Select</span>
+    <span><span class="key">Enter</span>Confirm</span>
+    <span><span class="key">Esc</span>Back</span>
+    <span style="margin-left:auto;opacity:.8" id="clock"></span>
+  </div>
+</div>
+
+<!-- MVC: model = data, view = DOM, controller = events -->
+<script src="js/model.js" defer></script>
+<script src="js/view.js" defer></script>
+<script src="js/controller.js" defer></script>
+</body>
+</html>
